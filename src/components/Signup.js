@@ -1,5 +1,6 @@
 import React from "react";
-import { Box, Button, TextField, Link } from "../Imports/imports";
+import { Box, Button, TextField, Link as MyLink } from "../Imports/imports";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
   return (
@@ -25,7 +26,7 @@ const Signup = () => {
           type="password"
           label="Password"
           fullWidth
-          placeholder="*******"
+          placeholder="***********"
         />
         <TextField
           sx={{
@@ -35,7 +36,7 @@ const Signup = () => {
           type="password"
           label="Re-enter Password"
           fullWidth
-          placeholder="*******"
+          placeholder="***********"
         />
         <Button
           fullWidth
@@ -47,9 +48,12 @@ const Signup = () => {
         >
           Sign up
         </Button>
-        <Link href="#" underline="none">
-          Already have an account? <u>Login</u>
-        </Link>
+        <MyLink href="#" underline="none">
+          Already have an account?{" "}
+          <Link to="/">
+            <u>Login</u>
+          </Link>
+        </MyLink>
       </Box>
     </>
   );

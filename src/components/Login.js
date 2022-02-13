@@ -7,8 +7,9 @@ import {
   FormControlLabel,
   Checkbox,
   Grid,
-  Link,
+  Link as MyLink,
 } from "../Imports/imports";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
@@ -33,7 +34,7 @@ const Login = () => {
         type="password"
         label="Password"
         fullWidth
-        placeholder="*******"
+        placeholder="***********"
       />
       <FormControlLabel
         sx={{
@@ -61,9 +62,9 @@ const Login = () => {
             fontSize: 15,
           }}
         >
-          <Link href="#" underline="none">
+          <MyLink href="#" underline="none">
             Forgot Password
-          </Link>
+          </MyLink>
         </Grid>
         <Grid
           item
@@ -71,9 +72,9 @@ const Login = () => {
             fontSize: 15,
           }}
         >
-          <Link href="#" underline="none">
-            Don't have an account? <u>Sign Up</u>
-          </Link>
+          <MyLink href="#" underline="none">
+            Don't have an account? <Link to="signup">Sign up</Link>
+          </MyLink>
         </Grid>
       </Grid>
     </Box>
