@@ -6,8 +6,8 @@ import Signup from "./Signup";
 const App = () => {
   return (
     <div>
-      <Login />
-      {/* <Signup /> */}
+      {/* <Login /> */}
+      <Signup />
       <Footer />
     </div>
   );
