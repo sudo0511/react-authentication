@@ -1,11 +1,5 @@
 import React, { useRef, useContext, useState } from "react";
-import {
-  Box,
-  Button,
-  TextField,
-  Link as MyLink,
-  Alert,
-} from "../Imports/imports";
+import { Box, Button, TextField, Alert, Grid } from "../Imports/imports";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthContext";
 
@@ -99,12 +93,20 @@ const Signup = () => {
       >
         Sign up
       </Button>
-      <MyLink href="#" underline="none">
-        Already have an account?{" "}
-        <Link to="/">
-          <u>Login</u>
+      <Grid
+        sx={{
+          fontSize: 15,
+        }}
+      >
+        <span style={{ color: `rgb(94, 77, 245)` }}>
+          {" "}
+          Already have an account?{" "}
+        </span>
+        <Link className="link" to="/">
+          Login
         </Link>
-      </MyLink>
+      </Grid>
+
       {/* {JSON.stringify(currentUser.email)} */}
     </Box>
   );

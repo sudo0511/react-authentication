@@ -5,6 +5,16 @@
   font-family: "Work Sans", sans-serif;
 }
 
+.link {
+  color: rgb(94, 77, 245);
+  text-decoration: none;
+}
+
+.link:hover {
+  color: blue;
+  text-decoration: underline;
+}
+
 .footer {
   position: fixed;
   bottom: 10px;

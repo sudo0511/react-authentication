@@ -8,8 +8,10 @@ import {
   Checkbox,
   Grid,
   Link as MyLink,
+  Alert,
 } from "../Imports/imports";
 import { Link } from "react-router-dom";
+import { blue } from "@mui/material/colors";
 
 const Login = () => {
   return (
@@ -25,6 +27,7 @@ const Login = () => {
         fullWidth
         placeholder="example@xyz.com"
         autoComplete="email"
+        required
       />
       <TextField
         sx={{
@@ -35,6 +38,7 @@ const Login = () => {
         label="Password"
         fullWidth
         placeholder="***********"
+        required
       />
       <FormControlLabel
         sx={{
@@ -62,9 +66,9 @@ const Login = () => {
             fontSize: 15,
           }}
         >
-          <MyLink href="#" underline="none">
+          <Link className="link" to="#">
             Forgot Password
-          </MyLink>
+          </Link>
         </Grid>
         <Grid
           item
@@ -72,9 +76,12 @@ const Login = () => {
             fontSize: 15,
           }}
         >
-          <MyLink href="#" underline="none">
-            Don't have an account? <Link to="signup">Sign up</Link>
-          </MyLink>
+          <span style={{ color: `rgb(94, 77, 245)` }}>
+            Don't have an account?{" "}
+          </span>
+          <Link className="link" to="signup">
+            Sign up
+          </Link>
         </Grid>
       </Grid>
     </Box>
