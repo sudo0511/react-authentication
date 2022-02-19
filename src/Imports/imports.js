@@ -7,3 +7,4 @@ export { default as FormControlLabel } from "@mui/material/FormControlLabel";
 export { default as Checkbox } from "@mui/material/Checkbox";
 export { default as Grid } from "@mui/material/Grid";
 export { default as Link } from "@mui/material/Link";
+export { default as Alert } from "@mui/material/Alert";
