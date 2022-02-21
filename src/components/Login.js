@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState, useContext } from "react";
 import {
   Button,
   Container,
@@ -10,13 +10,46 @@ import {
   Link as MyLink,
   Alert,
 } from "../Imports/imports";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { blue } from "@mui/material/colors";
+import { useAuth } from "../Contexts/AuthContext";
 
 const Login = () => {
+  const emailRef = useRef();
+  const passwdRef = useRef();
+  const { login } = useAuth();
+  const [error, setError] = useState("");
+  const navigator = useNavigate();
+
+  const handleLogin = async (e) => {
+    try {
+      setError("");
+      await login(emailRef.current.value, passwdRef.current.value);
+      navigator("/");
+    } catch (error) {
+      console.log(error);
+      setError(error.message);
+    }
+  };
+
   return (
     <Box className="container">
       <h1>Login</h1>
+      {error && (
+        <Alert
+          fullWidth
+          sx={{
+            mb: 2,
+          }}
+          severity="error"
+          variant="filled"
+          onClose={() => {
+            setError("");
+          }}
+        >
+          {error}
+        </Alert>
+      )}
       <TextField
         sx={{
           marginBottom: 3,
@@ -28,6 +61,7 @@ const Login = () => {
         placeholder="example@xyz.com"
         autoComplete="email"
         required
+        inputRef={emailRef}
       />
       <TextField
         sx={{
@@ -39,6 +73,7 @@ const Login = () => {
         fullWidth
         placeholder="***********"
         required
+        inputRef={passwdRef}
       />
       <FormControlLabel
         sx={{
@@ -55,6 +90,7 @@ const Login = () => {
         sx={{
           marginBottom: 3,
         }}
+        onClick={handleLogin}
       >
         Login
       </Button>
@@ -79,7 +115,7 @@ const Login = () => {
           <span style={{ color: `rgb(94, 77, 245)` }}>
             Don't have an account?{" "}
           </span>
-          <Link className="link" to="signup">
+          <Link className="link" to="/signup">
             Sign up
           </Link>
         </Grid>

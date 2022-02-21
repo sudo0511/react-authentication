@@ -39,3 +39,11 @@
 h1 {
   margin: 15px auto;
 }
+
+.dashboard-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 10px;
+}

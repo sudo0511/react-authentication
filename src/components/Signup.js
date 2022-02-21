@@ -1,14 +1,15 @@
 import React, { useRef, useContext, useState } from "react";
 import { Box, Button, TextField, Alert, Grid } from "../Imports/imports";
 import { Link } from "react-router-dom";
-import { AuthContext } from "../Contexts/AuthContext";
+import { useAuth } from "../Contexts/AuthContext";
 
 const Signup = () => {
   const emailRef = useRef();
   const passwdRef = useRef();
   const passwdConfirmRef = useRef();
-  const { signup } = useContext(AuthContext);
+  const { signup } = useAuth();
   const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   // console.log(signup);
 
@@ -20,7 +21,12 @@ const Signup = () => {
     }
     try {
       setError("");
-      await signup(emailRef.current.value, passwdRef.current.value);
+      await signup(emailRef.current.value, passwdRef.current.value).then(
+        (res) => {
+          setSuccess("Sign up successfull");
+          console.log(res);
+        }
+      );
     } catch (error) {
       console.log(error);
       setError(error.name);
@@ -33,7 +39,6 @@ const Signup = () => {
       {error && (
         <Alert
           sx={{
-            width: 370,
             mb: 2,
           }}
           severity="error"
@@ -43,6 +48,20 @@ const Signup = () => {
           }}
         >
           {error}
+        </Alert>
+      )}
+      {success && (
+        <Alert
+          sx={{
+            mb: 2,
+          }}
+          severity="success"
+          variant="filled"
+          onClose={() => {
+            setSuccess("");
+          }}
+        >
+          {success}
         </Alert>
       )}
       <TextField
@@ -102,7 +121,7 @@ const Signup = () => {
           {" "}
           Already have an account?{" "}
         </span>
-        <Link className="link" to="/">
+        <Link className="link" to="/login">
           Login
         </Link>
       </Grid>
